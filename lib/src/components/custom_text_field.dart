@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomTextField extends StatefulWidget {
   final IconData prefixIcon;
   final String label;
   final bool isSecret;
   final String hint;
+  final List<TextInputFormatter>? inputFormatters;
 
   const CustomTextField({
     required this.prefixIcon,
     required this.label,
     this.hint = '',
     this.isSecret = false,
+    this.inputFormatters,
     Key? key,
   }) : super(key: key);
 
@@ -33,6 +36,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       padding: const EdgeInsets.only(bottom: 15),
       child: TextFormField(
         obscureText: isObscure,
+        inputFormatters: widget.inputFormatters,
         decoration: InputDecoration(
           isDense: true,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),

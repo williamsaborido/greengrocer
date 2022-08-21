@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:greengrocer/src/base/base_screen.dart';
 import 'package:greengrocer/src/components/custom_outlined_button.dart';
 
 import '../components/custom_divider.dart';
 import '../components/custom_elevated_button.dart';
 import '../components/custom_text_button.dart';
 import '../components/custom_text_field.dart';
+import '../components/sign_in_logo.dart';
 import '../config/custom_colors.dart';
-import 'sign_in_logo.dart';
 import 'sign_up_screen.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -64,7 +65,11 @@ class SignInScreen extends StatelessWidget {
                     // Login button
                     CustomElevatedButton(
                       text: 'Entrar',
-                      voidCallback: () {},
+                      voidCallback: () => Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => const BaseScreen(),
+                        ),
+                      ),
                     ),
 
                     // Password recover button
@@ -89,7 +94,7 @@ class SignInScreen extends StatelessWidget {
                       voidCallback: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const SignUpScreen(),
+                          builder: (context) => SignUpScreen(),
                         ),
                       ),
                     ),
