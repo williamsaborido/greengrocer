@@ -37,6 +37,7 @@ class SignInLogo extends StatelessWidget {
               style: const TextStyle(fontSize: 25),
               child: AnimatedTextKit(
                 pause: Duration.zero,
+                repeatForever: true,
                 animatedTexts: [
                   FadeAnimatedText('Frutas'),
                   FadeAnimatedText('Verduras'),

@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:greengrocer/src/components/custom_outlined_button.dart';
 
-import '../components/custom_divider.dart';
 import '../components/custom_elevated_button.dart';
-import '../components/custom_text_button.dart';
 import '../components/custom_text_field.dart';
 import '../config/custom_colors.dart';
-import 'sign_in_logo.dart';
-import 'sign_up_screen.dart';
 
-class SignInScreen extends StatelessWidget {
-  const SignInScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +18,18 @@ class SignInScreen extends StatelessWidget {
             maxWidth: MediaQuery.of(context).size.width,
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Logo
               const Expanded(
-                child: SignInLogo(),
+                child: Center(
+                  child: Text(
+                    'Cadastro',
+                    style: TextStyle(color: Colors.white, fontSize: 40),
+                  ),
+                ),
               ),
 
-              // Login Form
+              // Sign up Form
               Container(
                 decoration: const BoxDecoration(
                   color: Colors.white,
@@ -46,7 +45,7 @@ class SignInScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    // Login Field
+                    // E-mail Field
                     const CustomTextField(
                       prefixIcon: Icons.mail,
                       label: 'e-mail',
@@ -61,37 +60,31 @@ class SignInScreen extends StatelessWidget {
                       hint: 'Digite sua senha',
                     ),
 
+                    // Name Field
+                    const CustomTextField(
+                      prefixIcon: Icons.person,
+                      label: 'Nome',
+                      hint: 'Digite seu nome',
+                    ),
+
+                    // Mobile Field
+                    const CustomTextField(
+                      prefixIcon: Icons.phone,
+                      label: 'Celular',
+                      hint: 'Digite seu número de celular',
+                    ),
+
+                    // ID Field
+                    const CustomTextField(
+                      prefixIcon: Icons.file_copy,
+                      label: 'CPF',
+                      hint: 'Digite seu CPF',
+                    ),
+
                     // Login button
                     CustomElevatedButton(
-                      text: 'Entrar',
+                      text: 'Cadastrar usuário',
                       voidCallback: () {},
-                    ),
-
-                    // Password recover button
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: CustomTextButton(
-                        text: 'Esqueceu a senha?',
-                        color: CustomColors.customContrastColor,
-                        voidCallback: () {},
-                      ),
-                    ),
-
-                    // Divider
-                    CustomDivider(
-                      text: 'ou',
-                      color: Colors.grey.withAlpha(90),
-                    ),
-
-                    // Sign up button
-                    CustomOutlinedButton(
-                      text: 'Criar conta',
-                      voidCallback: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SignUpScreen(),
-                        ),
-                      ),
                     ),
                   ],
                 ),
