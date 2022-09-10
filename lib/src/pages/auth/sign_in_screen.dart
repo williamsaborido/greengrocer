@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:greengrocer/src/base/base_screen.dart';
-import 'package:greengrocer/src/components/custom_outlined_button.dart';
-
-import '../components/custom_divider.dart';
-import '../components/custom_elevated_button.dart';
-import '../components/custom_text_button.dart';
-import '../components/custom_text_field.dart';
-import '../components/sign_in_logo.dart';
-import '../config/custom_colors.dart';
+import '../../components/custom_divider.dart';
+import '../../components/custom_elevated_button.dart';
+import '../../components/custom_outlined_button.dart';
+import '../../components/custom_text_button.dart';
+import '../../components/custom_text_field.dart';
+import '../../components/sign_in_logo.dart';
+import '../../config/custom_colors.dart';
+import '../base/base_screen.dart';
 import 'sign_up_screen.dart';
 
 class SignInScreen extends StatelessWidget {
