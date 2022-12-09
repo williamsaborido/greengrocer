@@ -1,5 +1,6 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:greengrocer/src/components/item_tile.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
 
 import '../../components/app_bar_logo.dart';
@@ -44,7 +45,7 @@ class _HomeTabState extends State<HomeTab> {
           )
         ],
       ),
-      body: Column(
+      body: Column(        
         children: [
           // Barra de pesquisa
           Padding(
@@ -96,15 +97,23 @@ class _HomeTabState extends State<HomeTab> {
             ),
           ),
           // Grid view
-          GridView.builder(
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 2,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
+          Expanded(
+            child: GridView.builder(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+              physics: const BouncingScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 9 / 11.5,
+              ),
+              itemCount: appData.items.length,
+              itemBuilder: (context, index) {
+                return ItemTile(
+                  item: appData.items[index],
+                );
+              },
             ),
-            itemBuilder: (context, index) {
-              return Container();
-            },
           ),
         ],
       ),
