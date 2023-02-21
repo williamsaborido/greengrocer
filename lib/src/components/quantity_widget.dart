@@ -2,7 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
 
 class QuantityWidget extends StatelessWidget {
-  const QuantityWidget({Key? key}) : super(key: key);
+  final int value;
+  final String suffixText;
+  final Function(int quantity) result;
+  final bool isRemovable;
+
+  const QuantityWidget({
+    Key? key,
+    required this.value,
+    required this.suffixText,
+    required this.result,
+    this.isRemovable = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +31,23 @@ class QuantityWidget extends StatelessWidget {
         ],
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           _QuantityButton(
-            color: Colors.grey,
-            icon: Icons.remove,
-            onPressed: () {},
+            color: isRemovable && value <= 1 ? Colors.red : Colors.grey,
+            icon:
+                isRemovable && value <= 1 ? Icons.delete_forever : Icons.remove,
+            onPressed: () {
+              if (value <= 1 && !isRemovable) return;
+              int resultCount = value - 1;
+              result(resultCount);
+            },
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
-              'TEXT',
-              style: TextStyle(
+              '$value $suffixText',
+              style: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),
@@ -39,7 +56,10 @@ class QuantityWidget extends StatelessWidget {
           _QuantityButton(
             color: CustomColors.customSwatchColor,
             icon: Icons.add,
-            onPressed: () {},
+            onPressed: () {
+              int resultCount = value + 1;
+              result(resultCount);
+            },
           ),
         ],
       ),

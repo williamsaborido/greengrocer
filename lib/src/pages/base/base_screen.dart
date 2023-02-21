@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../config/custom_colors.dart';
+import '../cart/cart_tab.dart';
 import '../home/home_tab.dart';
 
 class BaseScreen extends StatefulWidget {
@@ -22,7 +23,7 @@ class _BaseScreenState extends State<BaseScreen> {
         controller: pageController,
         children: [
           const HomeTab(),
-          Container(color: Colors.yellow),
+          const CartTab(),
           Container(color: Colors.blue),
           Container(color: Colors.purple),
         ],
@@ -30,7 +31,7 @@ class _BaseScreenState extends State<BaseScreen> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
-        backgroundColor: CustomColors.customSwatchColor,
+        backgroundColor: Theme.of(context).primaryColor,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white.withAlpha(100),
         onTap: (int index) => setState(() {
